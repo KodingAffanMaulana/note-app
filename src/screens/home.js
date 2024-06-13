@@ -5,7 +5,7 @@ import CustomButton from '../components/customButton';
 const NoteCard = ({ item, setCurrentPage, deleteNote, setSelectedNote }) => (
   <View style={styles.card}>
     <Text className="font-bold text-xl ">{item.title}</Text>
-    <Text className="py-3 font-semibold text-gray-300">{item.desc}</Text>
+    <Text className="py-1 font-semibold text-gray-300">{item.desc}</Text>
     <View style={styles.buttons}>
       <CustomButton
         backgroundColor="#FFC300"
@@ -33,7 +33,7 @@ const NoteCard = ({ item, setCurrentPage, deleteNote, setSelectedNote }) => (
 );
 
 const Home = ({ noteList, setCurrentPage, deleteNote, setSelectedNote }) => (
-  <View className="bg-cyan-500 p-8 min-h-screen flex justify-center">
+  <View className="bg-cyan-500 p-5 min-h-screen flex justify-center">
     <StatusBar animated={true} backgroundColor="#61dafb" />
     <Text className="text-2xl text-sky-700 font-bold">FanNote App</Text>
     <FlatList
@@ -49,23 +49,26 @@ const Home = ({ noteList, setCurrentPage, deleteNote, setSelectedNote }) => (
         />
       )}
       keyExtractor={(item) => item.id.toString()}
+      contentContainerStyle={{ paddingBottom: 100 }}
     />
-    <CustomButton
-      backgroundColor="orange"
-      color="#203239"
-      text="Tambahkan Note"
-      width="100%"
-      onPress={() => {
-        setCurrentPage('add');
-      }}
-    />
+    <View style={styles.addButtonContainer}>
+      <CustomButton
+        backgroundColor="orange"
+        color="#203239"
+        text="Tambahkan Note"
+        width="100%"
+        onPress={() => {
+          setCurrentPage('add');
+        }}
+      />
+    </View>
   </View>
 );
 
 const styles = StyleSheet.create({
   card: {
     padding: 10,
-    marginVertical: 15,
+    marginVertical: 8,
     borderColor: '#DDD',
     borderWidth: 2,
     borderRadius: 5,
@@ -75,6 +78,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+  },
+  addButtonContainer: {
+    position: 'absolute',
+    padding: 20,
+    bottom: 20,
+    left: 20,
+    right: 20,
   },
 });
 
