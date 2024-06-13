@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Home from './screens/home';
 import AddNote from './screens/addNote';
 import EditNote from './screens/editNote';
+import { dummy } from './data/dummy';
+import './index.css';
 
 const CurrentPageWidget = ({
   currentPage,
@@ -37,13 +39,7 @@ const CurrentPageWidget = ({
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedNote, setSelectedNote] = useState(null);
-  const [noteList, setNoteList] = useState([
-    {
-      id: 1,
-      title: 'Note pertama',
-      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry',
-    },
-  ]);
+  const [noteList, setNoteList] = useState(dummy);
 
   const addNote = (title, desc) => {
     const id = noteList.length > 0 ? noteList[noteList.length - 1].id + 1 : 1;
