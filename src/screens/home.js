@@ -1,11 +1,11 @@
 import React from 'react';
-import { FlatList, StyleSheet, View, Text } from 'react-native';
+import { FlatList, StyleSheet, View, Text, StatusBar } from 'react-native';
 import CustomButton from '../components/customButton';
 
 const NoteCard = ({ item, setCurrentPage, deleteNote, setSelectedNote }) => (
   <View style={styles.card}>
-    <Text style={styles.cardTitle}>{item.title}</Text>
-    <Text>{item.desc}</Text>
+    <Text className="font-bold text-xl ">{item.title}</Text>
+    <Text className="py-3 font-semibold text-gray-300">{item.desc}</Text>
     <View style={styles.buttons}>
       <CustomButton
         backgroundColor="#FFC300"
@@ -33,17 +33,11 @@ const NoteCard = ({ item, setCurrentPage, deleteNote, setSelectedNote }) => (
 );
 
 const Home = ({ noteList, setCurrentPage, deleteNote, setSelectedNote }) => (
-  <View style={styles.container}>
-    <CustomButton
-      backgroundColor="#DDD"
-      color="#203239"
-      text="Tambahkan Note"
-      width="100%"
-      onPress={() => {
-        setCurrentPage('add');
-      }}
-    />
+  <View className="bg-cyan-500 p-8 min-h-screen flex justify-center">
+    <StatusBar animated={true} backgroundColor="#61dafb" />
+    <Text className="text-2xl text-sky-700 font-bold">FanNote App</Text>
     <FlatList
+      className="pt-3"
       showsVerticalScrollIndicator={false}
       data={noteList}
       renderItem={({ item }) => (
@@ -56,28 +50,25 @@ const Home = ({ noteList, setCurrentPage, deleteNote, setSelectedNote }) => (
       )}
       keyExtractor={(item) => item.id.toString()}
     />
+    <CustomButton
+      backgroundColor="orange"
+      color="#203239"
+      text="Tambahkan Note"
+      width="100%"
+      onPress={() => {
+        setCurrentPage('add');
+      }}
+    />
   </View>
 );
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    padding: 20,
-  },
   card: {
     padding: 10,
     marginVertical: 15,
     borderColor: '#DDD',
     borderWidth: 2,
     borderRadius: 5,
-  },
-  cardTitle: {
-    fontWeight: '600',
-    color: '#203239',
-    fontSize: 16,
-    marginBottom: 5,
   },
   buttons: {
     marginTop: 10,

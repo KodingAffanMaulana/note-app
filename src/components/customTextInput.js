@@ -23,6 +23,7 @@ const CustomTextInput = ({ text, onChange, label, multiline, numberOfLines }) =>
         placeholder={label}
         onChangeText={onChange}
         defaultValue={text}
+        className="rounded-xl"
       />
     </View>
   );

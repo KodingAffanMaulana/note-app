@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import CustomButton from '../components/customButton';
 import CustomTextInput from '../components/customTextInput';
 
-const EditNote = ({ editNote, setCurrentPage, selectedNote }) => {
+const AddNote = ({ addNote, setCurrentPage }) => {
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('');
 
-  useEffect(() => {
-    if (selectedNote) {
-      setTitle(selectedNote.title);
-      setDesc(selectedNote.desc);
-    }
-  }, [selectedNote]);
-
   return (
     <View style={styles.container}>
-      <Text style={styles.pageTitle}>Edit Note</Text>
+      <Text style={styles.pageTitle}>Tambahkan Note</Text>
       <CustomTextInput
         text={title}
         onChange={setTitle}
@@ -35,12 +28,13 @@ const EditNote = ({ editNote, setCurrentPage, selectedNote }) => {
       />
       <View style={styles.spacerTop}>
         <CustomButton
-          backgroundColor="#247881"
+          backgroundColor="green"
           color="white"
           text="Simpan"
           width="100%"
+          // Jalankan function addNote dan arahkan kembali layar ke Home
           onPress={() => {
-            editNote(selectedNote.id, title, desc);
+            addNote(title, desc);
             setCurrentPage('home');
           }}
         />
@@ -73,8 +67,8 @@ const styles = StyleSheet.create({
     color: '#203239',
   },
   spacerTop: {
-    marginTop: 30,
+    marginTop: 10,
   },
 });
 
-export default EditNote;
+export default AddNote;

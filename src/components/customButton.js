@@ -4,21 +4,22 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 const CustomButton = ({ backgroundColor, color, text, onPress, fontSize = 16, width = 120 }) => {
   const styles = StyleSheet.create({
     button: {
-      alignItems: 'center',
       backgroundColor,
       width,
-      padding: 10,
     },
     buttonText: {
-      fontSize,
-      fontWeight: '700',
       color,
     },
   });
 
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
-      <Text style={styles.buttonText}>{text}</Text>
+    <TouchableOpacity
+      className="items-center p-3 rounded-xl"
+      style={styles.button}
+      onPress={onPress}>
+      <Text className="font-bold" style={styles.buttonText}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };

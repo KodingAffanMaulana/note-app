@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import Home from './screens/home';
-import AddNote from './screens/addNote';
-import EditNote from './screens/editNote';
-import { dummy } from './data/dummy';
-import './index.css';
+import Home from './src/screens/home';
+import AddNote from './src/screens/addNote';
+import EditNote from './src/screens/editNote';
+import { dummy } from './src/data/dummy';
 
 const CurrentPageWidget = ({
   currentPage,
